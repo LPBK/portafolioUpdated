@@ -1,72 +1,150 @@
-let conteo1=0;
-let conteo2=0;
-let score1=document.getElementById("score-team1")
-let  score2=document.getElementById("score-team2")
-function team1add1(){
-    conteo1 += 1;
-    score1.textContent = conteo1
-}
-function team1add2(){
-    conteo1 += 2;
-    score1.textContent = conteo1
-}
-function team1add3(){
-    conteo1 += 3;
-    score1.textContent = conteo1
-}
-function team2add1(){
-    conteo2 += 1;
-    score2.textContent = conteo2
-}
-function team2add2(){
-    conteo2 += 2;
-    score2.textContent = conteo2
-}
-function team2add3(){
-    conteo2 += 3;
-    score2.textContent = conteo2
-}
-let Intervalo;
+//declaring variables
+let score1=document.getElementById("score1");
+let score2=document.getElementById("score2");
+let periodoCount=document.getElementById("periodoCount");
+let restante=document.getElementById("restante");
+const pause=document.getElementById("pause");
+const nuevoJuego=document.getElementById("nuevoJuego");
+const desempate=document.getElementById("desempate");
+const revancha=document.getElementById("revancha")
+let team1Ed=document.getElementById("team1Ed");
+let team2Ed=document.getElementById("team2Ed");
+let timerRunning=false;
+let count1=0;
+let count2=0;
+let period=1;
+//nombre de jugadores 
 
-function startCountdown() {
-    // Tiempo en segundos (ejemplo: 5 minutos = 300 segundos 5*60=300)
-    let tiemporestante = 720; 
-    countdownInterval = setInterval(function () {
-        // Calcular minutos y segundos
-        let minutos = Math.floor(tiemporestante / 60);
-        let segundos = tiemporestante % 60;
-
-        // Formatear minutos y segundos para que siempre muestren dos dígitos
-        minutos = minutos < 10 ? '0' + minutos : minutos;
-        segundos = segundos < 10 ? '0' + segundos : segundos;
-
-        // Mostrar el tiempo en pantalla
-        document.getElementById("game-timer").textContent = `${minutos}:${segundos}`;
-
-        // Reducir el tiempo en 1 segundo
-        tiemporestante--;
-
-        // Detener el temporizador cuando llegue a cero
-        if (tiemporestante < 0) {
-            clearInterval(countdownInterval);
-            document.getElementById("game-timer").textContent = "00:00";
-            alert("¡El tiempo se ha acabado!");
+//declaring fuction that reduces time
+let timer;
+let tiempo=720;
+function countdown(){
+    clearInterval(timer);
+     timerRunning=true;
+     timer=setInterval(()=>{
+        if(tiempo>0 && period<=4){
+            tiempo--;
+            let minutos=String(Math.floor(tiempo/60)).padStart(2,"0");
+            let segundos=String(Math.floor(tiempo%60)).padStart(2,"0");
+            restante.textContent=`${minutos}:${segundos}`;
         }
-    }, 1000); // Actualizar cada 1000 ms (1 segundo)
+        else{
+            clearInterval(timer)
+            alert("termino el tiempo, por favor inicie un nuevo set");
+            timerRunning=false
+        }
+    },1000)
 }
-function nextPeriod(){
-    clearInterval(countdownInterval);
-    let period=1;
-    let periodo = document.getElementById("current-period").textContent = period += 1;
-    document.getElementById("game-timer").textContent = "12:00";
-}
-function newmatch(){
-    conteo1 = 0;
-    score1.textContent = conteo1
-    conteo2 = 0;
-    score2.textContent = conteo1
-    let period=1
-    clearInterval(countdownInterval);
-    document.getElementById("game-timer").textContent = "12:00";
-    document.getElementById("current-period").textContent=period
-}
+    //declaring add +1 team 1
+    const team1Plus1=document.getElementById("team1Plus1").addEventListener("click",()=>{
+        if(timerRunning){
+            count1++;
+            score1.textContent=count1;
+        }
+    });
+    //declaring add +2 team 1
+    const team1Plus2=document.getElementById("team1Plus2").addEventListener("click",()=>{
+        if(timerRunning){
+            count1=count1+2;
+            score1.textContent=count1;
+        }
+    });
+    //declaring add +3 team 1
+    const team1Plus3=document.getElementById("team1Plus3").addEventListener("click",()=>{
+        if(timerRunning){
+            count1=count1+3;
+            score1.textContent=count1;
+        }
+    });
+        //declaring add +1 team 2
+    const team2Plus1=document.getElementById("team2Plus1").addEventListener("click",()=>{
+        if(timerRunning){
+            count2++;
+            score2.textContent=count2;
+        }
+    });
+    //declaring add +2 team 2
+    const team2Plus2=document.getElementById("team2Plus2").addEventListener("click",()=>{
+        if(timerRunning){
+            count2=count2+2;
+            score2.textContent=count2;
+        }
+    });
+    //declaring add +3 team 
+    const team2Plus3=document.getElementById("team2Plus3").addEventListener("click",()=>{
+        if(timerRunning){
+            count2=count2+3;
+            score2.textContent=count2;
+        }
+    });
+//declaring  timer and start button.
+const start=document.getElementById("iniciar").addEventListener("click",()=>{
+    countdown()
+    pause.textContent="PAUSA";
+});
+//declaring new set
+const nuevoSet=document.getElementById("nuevoSet").addEventListener("click",()=>{
+    if(tiempo==0 && period<4){
+        period++;
+        periodoCount.textContent=`${period}/4`;
+        tiempo=720;
+        let minutos=String(Math.floor(tiempo/60)).padStart(2,"0");
+        let segundos=String(Math.floor(tiempo%60)).padStart(2,"0");
+        restante.textContent=`${minutos}:${segundos}`;
+    }
+    else if(tiempo==0 &&period==4){
+        alert("termino el tiempo, y no hay mas sets disponibles,por favor click en  revancha o nuevo juego")
+    }
+});
+pause.addEventListener("click",()=>{
+    if(pause.textContent=="PAUSA"){
+        clearInterval(timer)
+        pause.textContent="PLAY";
+    }
+    else if(pause.textContent="PLAY"){
+        countdown()
+        pause.textContent="PAUSA";
+    }
+    
+})
+nuevoJuego.addEventListener("click",()=>{
+    if(tiempo==0 && period==4){
+        team1=prompt("Por favor ingrese el nombre del equipo 1");
+        team2=prompt("Por favor ingrese el nombre del equipo 2");
+        team1Ed.textContent=team1;
+        team2Ed.textContent=team2;
+        count1=0;
+        count2=0;
+        period=1;
+        periodoCount.textContent=`${period}/4`;
+        tiempo=720;
+        let minutos=String(Math.floor(tiempo/60)).padStart(2,"0");
+        let segundos=String(Math.floor(tiempo%60)).padStart(2,"0");
+        restante.textContent=`${minutos}:${segundos}`;
+    }
+})
+desempate.addEventListener("click",()=>{
+    if(count1==count2 && tiempo==0 && period==4){
+        period=3;
+        period++
+        periodoCount.textContent=`5/4`;
+        tiempo=720;
+        let minutos=String(Math.floor(tiempo/60)).padStart(2,"0");
+        let segundos=String(Math.floor(tiempo%60)).padStart(2,"0");
+        restante.textContent=`${minutos}:${segundos}`;
+    }
+})
+revancha.addEventListener("click",()=>{
+    if(period==4 && tiempo==0 && count1>count2||count2>count1){
+        count1=0;
+        count2=0;
+        period=1;
+        periodoCount.textContent=`${period}/4`;
+        tiempo=720;
+        let minutos=String(Math.floor(tiempo/60)).padStart(2,"0");
+        let segundos=String(Math.floor(tiempo%60)).padStart(2,"0");
+        restante.textContent=`${minutos}:${segundos}`;
+        score1.textContent=count1;
+        score2.textContent=count2;
+    }
+})
