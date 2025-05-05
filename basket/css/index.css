@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url(/img/michael-jordan-photos-wallpaper-preview.jpg) no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+.container{
+    padding: 10px;
+    margin-top: 30px;
+}
+.title{
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 4px white;
+}
+.timerPeriod{
+    padding: 20px;
+    text-shadow: 0px 0px 4px white;
+    border-radius: 3px;
+    border: 1px solid white;
+}
+.scoreBoard{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0,0.5);
+    padding: 40px;
+    border: 1px solid white;
+    box-shadow: 0 0 2px black;
+}
+.player1,.player2{
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.btn{
+    padding: 6px;
+    border-radius: 3px;
+    margin: 16px 2px;
+}
+.btn:hover{
+    background: rgb(255, 255, 255,0.3);
+}
+.options{
+    margin-top: 50PX;
+}
+.options button{
+    background: rgb(0, 0, 0,0.5);
+    border: 1px solid white;
+    padding: 20px ;
+}
+.options button:hover{
+    background: rgb(0, 0, 0,0.7);
+    border: 1px solid white;
+    padding: 20px ;
+}
+@media(max-width: 412px){
+    .container{
+        padding: 20px;
+    }
+    .scoreBoard{
+        display: flex;
+        flex-direction: column;
+    }
+    .options button{
+        padding: 10px ;
+    }
+}
+@media(max-width: 896px){
+    .container{
+        padding: 20px;
+    }
+    .scoreBoard{
+        display: flex;
+        flex-direction: column;
+    }
+    .options button{
+        padding: 10px ;
+    }
+}
+@media(max-width: 1000px){
+    .container{
+        padding: 20px;
+    }
+    .scoreBoard{
+        display: flex;
+        flex-direction: column;
+    }
+    .options button{
+        padding: 10px ;
+    }
+}

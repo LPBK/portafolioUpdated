@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>&#127936 BKB</title>
+</head>
+
+<body>
+    <div class="container text-white flex-col items-center justify-items-center text-center font-bold">
+        <div class="title bg-yellow-200/20">
+            <h1>BASKETBALL SCORE BOARD</h1>
+        </div>
+        <section class="scoreBoard">
+            <section class="player1">
+                <div class="team1 flex-col items-center justify-items-center">
+                    <div class="teamScore">
+                        <h2 class="team1" id="team1Ed">Team 1</h2>
+                        <p class="score1" id="score1">0</p>
+                    </div>
+                    <div class="scoreBtn">
+                        <button class="btn bg-emerald-500" id="team1Plus1">+1</button>
+                        <button class="btn bg-yellow-500" id="team1Plus2">+2</button>
+                        <button class="btn bg-red-800" id="team1Plus3">+3</button>
+                    </div>
+                </div>
+            </section>
+            <section class="timerPeriod flex-col  ">
+                <div class="period">
+                    <h1 class="periodo">Periodo</h1>
+                    <p class="periodoCount" id="periodoCount">1/4</p>
+                </div>
+                <div class="time">
+                    <h1 class="transcurrido">Tiempo restante</h1>
+                    <p class="restante" id="restante">12:00</p>
+                </div>
+            </section>
+            <section class="player2">
+                <div class="team2 flex-col items-center justify-items-center">
+                    <div class="teamScore">
+                        <h2 class="team2" id="team2Ed">Team 2</h2>
+                        <p class="score2" id="score2">0</p>
+                    </div>
+                    <div class="scoreBtn">
+                        <button class="btn bg-emerald-500" id="team2Plus1">+1</button>
+                        <button class="btn bg-yellow-500" id="team2Plus2">+2</button>
+                        <button class="btn bg-red-800" id="team2Plus3">+3</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="options grid grid-cols-2 items-center">
+            <button id="iniciar">INICIAR</button>
+            <button id="nuevoSet">NUEVO PERIODO</button>
+            <button id="nuevoJuego">NUEVO JUEGO</button>
+            <button id="desempate">DESEMPATE</button>
+            <button id="revancha">REVANCHA</button>
+            <button id="pause">PAUSA</button>
+        </section>
+    </div>
+    <script src="/index.js"></script>
+</body>
+
+</html>
+<!-- crear un marcador de Baloncesto el cual permita anotar la cantidad de puntos 
+anotados por cada equipo, el tiempo de juego y el periodo en el que se encuentra el juego.
+El marcador debe tener las siguientes funcionalidades: anotacion+1,2,3
+medio tiempo, nuevo set, nuevo juego. empezar set. la opcion de detener el tiempo.
+y el nombre de los equipos. -->
