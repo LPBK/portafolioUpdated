@@ -14,7 +14,10 @@ let count1=0;
 let count2=0;
 let period=1;
 //nombre de jugadores 
-
+team1=prompt("Por favor ingrese el nombre del equipo 1");
+team2=prompt("Por favor ingrese el nombre del equipo 2");
+team1Ed.textContent=team1;
+team2Ed.textContent=team2;
 //declaring fuction that reduces time
 let timer;
 let tiempo=720;
